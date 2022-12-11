@@ -44,4 +44,19 @@ public class ReviewService {
                 .message("리뷰 등록이 성공했습니다.")
                 .build();
     }
+
+    public Review getReview(Long id) {
+        Review review = reviewRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("해당 id가 없습니다."));
+
+        Optional<Review> optionalReview = reviewRepository.findById(id);
+        optionalReview.isEmpty();
+        optionalReview.orElseThrow();
+        // Optional의 사용
+        // 1. Optional왜 쓰는지? null을 안쓸려고 쓴다.
+        // 2. Optional왜 쓰는지? DB조회 할 때 .findById()를 쓸 때 안나올 수 있다.
+        // 3. Optional을 썼을때 .orElseThrow(), .orElse(), ifPresent() 등 편의기능을 써서 코드를 짧게 쓸 수 있다.
+
+        return review;
+    }
 }
