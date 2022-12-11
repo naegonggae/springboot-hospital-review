@@ -33,8 +33,4 @@ public class ReviewController {
                 .build();
         return ResponseEntity.ok().body(response);
     }
-    @GetMapping("/{hospitalId}/reviews")
-    public ResponseEntity<List<ReviewReadResponse>> reviews(@PathVariable Long hospitalId) {
-        return ResponseEntity.ok().body(reviewService.findAllByHospitalId(hospitalId));
-    }
 }
